@@ -1,7 +1,7 @@
 # Documentação do Projeto
 
 A documentação do projeto é composta pelos seguintes itens: 
- - [Processo de Design Thinking](concepcao/Processo%20Design%20Thinking%20-%20TEMPLATE.pdf)
- - [Relatório Técnico](relatorio/Relatorio%20Tecnico%20-%20TEMPLATE.md)
- - [Apresentação do Projeto](apresentacao/apresentacao%20-%20TEMPLATE.pptx)
+ - [Processo de Design Thinking](concepcao/Desing%20Thinking.pdf)
+ - [Relatório Técnico](relatorio/TI%20-%20Doc%20projeto%20Semear%20em%20Casa.pdf)
+ - [Apresentação do Projeto](apresentacao/Projeto%20Semeando%20em%20Casa.pptx)
 
