@@ -4,15 +4,15 @@ function salvarsalvarPequenoAgricultor() {
   var nome = document.getElementById('nome').value;
   var sobrenome = document.getElementById('sobrenome').value;
   var senha = document.getElementById('senha').value;
-  //var Telefone = document.getElementById('Televone').value;
+  var Telefone = document.getElementById('Televone').value;
   var email = document.getElementById('email').value;
-  /*var AreaCultivo = document.getElementById('D2B1').value; 
+  var AreaCultivo = document.getElementById('D2B1').value; 
   var Cereal = document.getElementsByClassName('D2B2_1').value;
   var Fruticultura = document.getElementsByClassName('D2B2_2').value;
   var Horticultura = document.getElementsByClassName('D2B2_3').value;
   var Cafeicultura = document.getElementsByClassName('D2B2_4').value;
   var Producao = document.getElementById('D2B3').value;
-  var interesse = document.getElementById('D2B4').value;*/
+  var interesse = document.getElementById('D2B4').value;
 
   // Criptografa a senha usando MD5
   var senhaCriptografada = CryptoJS.MD5(senha).toString();
@@ -31,15 +31,15 @@ function salvarsalvarPequenoAgricultor() {
       nome: nome,
       sobrenome: sobrenome,
       senha: senha,
-     // Telefone: Televone,
+      Telefone: Telefone,
       email: email,
-     /* Area: D2B1,
-      Cereais: D2B2_1,
-      Frutas: D2B2_2,
-      Folhas: D2B2_3,
-      Cafe: D2B2_4,
-      Producao: D2B3,
-      Interesses: D2B4,*/
+      Area: AreaCultivo,
+      Cereais: Cereal,
+      Frutas: Fruticultura,
+      Folhas: Horticultura,
+      Cafe: Cafeicultura,
+      Producao: Producao,
+      Interesses: interesse
   };
 
   // Adiciona o novo objeto ao array
