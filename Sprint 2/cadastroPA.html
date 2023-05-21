@@ -9,7 +9,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="stylePA.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var form = document.querySelector(".F1");
+        var button = document.querySelector("#carregaDados");
+    
+        // Adicionar evento de clique ao botão
+        button.addEventListener("click", function() {
+          // Obter os valores dos campos do formulário
+          var nome = form.querySelector("#Nome").value;
+          var sobrenome = form.querySelector("#sobrenome").value;
+          var senha = form.querySelector("#Senha").value;
+          var confirmarSenha = form.querySelector("#Confirmar").value;
+          var telefone = form.querySelector("#Televone").value;
+          var email = form.querySelector("#email").value;
+          var areaCultivo = form.querySelector("#D2B1").value;
+          var checkbox1 = form.querySelector(".D2B2_1").checked;
+          var checkbox2 = form.querySelector(".D2B2_2").checked;
+          var checkbox3 = form.querySelector(".D2B2_3").checked;
+          var checkbox4 = form.querySelector(".D2B2_4").checked;
+          var producao = form.querySelector("#D2B3").value;
+          var interesses = form.querySelector("#D2B4").value;
+    
+          // Armazenar os valores no Local Storage
+          localStorage.setItem("nome", nome);
+          localStorage.setItem("sobrenome", sobrenome);
+          localStorage.setItem("senha", senha);
+          localStorage.setItem("confirmarSenha", confirmarSenha);
+          localStorage.setItem("telefone", telefone);
+          localStorage.setItem("email", email);
+          localStorage.setItem("areaCultivo", areaCultivo);
+          localStorage.setItem("checkbox1", checkbox1);
+          localStorage.setItem("checkbox2", checkbox2);
+          localStorage.setItem("checkbox3", checkbox3);
+          localStorage.setItem("checkbox4", checkbox4);
+          localStorage.setItem("producao", producao);
+          localStorage.setItem("interesses", interesses);
+        });
+      });
+    </script>
+    
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </head>
 
@@ -62,6 +101,14 @@
                 <input type="email" id="email" name="E-mail">
               </label>
         </div>
+      
+      
+        <br>
+        <br>
+        
+    
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
     <div class ="dialogo 2">
         <h2>Diga um pouco sobre você.</h2>
@@ -112,7 +159,7 @@
         
     </div>
     <div class="separador"></div>
-    <button type="button submit" class="btn btn-secondary" id = "iudi">Cadastre-se</button>
+    <button type="button submit" class="btn btn-secondary" id = "carregaDados">Cadastre-se</button>
     <scrpit src="scriptPA.js"></scrpit>
 </body>
 </form>
