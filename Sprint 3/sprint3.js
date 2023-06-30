@@ -2,10 +2,12 @@ var db_contatos_inicial = {
     "data": [
         {
             "id": 1,
-            "nome": "Samabaia",
-            "cientifico": "Tracheophyta",
-            "local": "Terra",
-            "idade": 15
+            "nome": "Leanne Graham",
+            "cidade": "Belo Horizonte",
+            "categoria": "amigos",
+            "email": "Sincere@april.biz",
+            "telefone": "1-770-736-8031",
+            "website": "hildegard.org"
         }
     ]
 }
@@ -24,19 +26,20 @@ function displayMessage(msg) {
 function insertContato(contato) {
     // Calcula novo Id a partir do último código existente no array (PODE GERAR ERRO SE A BASE ESTIVER VAZIA)
     let novoId = 1;
-    if (db.data.length != 0) 
-      novoId = db.data[db.data.length - 1].id + 1;
+    if (db.data.length != 0)
+        novoId = db.data[db.data.length - 1].id + 1;
     let novoContato = {
         "id": novoId,
         "nome": contato.nome,
-        "cientifico" : contato.cientifico,
         "local": contato.local,
-        "idade" : contato.idade
+        "idade": contato.idade,
+        "cientifico": contato.cientifico,
+        "logado": contato.logado
     };
 
     // Insere o novo objeto no array
     db.data.push(novoContato);
-    displayMessage("Planta adicionada com sucesso");
+    displayMessage("Contato inserido com sucesso");
 
     // Atualiza os dados no Local Storage
     localStorage.setItem('db_contato', JSON.stringify(db));
@@ -48,9 +51,11 @@ function updateContato(id, contato) {
 
     // Altera os dados do objeto no array
     db.data[index].nome = contato.nome,
-    db.data[index].email = contato.email,
-    db.data[index].local = contato.local,
-    db.data[index].idade = contato.idade
+        db.data[index].email = contato.email,
+        db.data[index].telefone = contato.telefone,
+        db.data[index].cidade = contato.cidade,
+        db.data[index].categoria = contato.categoria,
+        db.data[index].website = contato.website
 
     displayMessage("Contato alterado com sucesso");
 
@@ -58,7 +63,7 @@ function updateContato(id, contato) {
     localStorage.setItem('db_contato', JSON.stringify(db));
 }
 
-function deleteContato(id) {    
+function deleteContato(id) {
     // Filtra o array removendo o elemento com o id passado
     db.data = db.data.filter(function (element) { return element.id != id });
 

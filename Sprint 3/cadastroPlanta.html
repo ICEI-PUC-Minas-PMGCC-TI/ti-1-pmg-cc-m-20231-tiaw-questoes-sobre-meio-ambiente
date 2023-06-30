@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastro de Contatos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="CRUD.css">
-    <script src="CRUD.js"></script>
+    <link rel="stylesheet" href="sprint3.css">
 </head>
 
 <body onload="init()">
@@ -17,54 +16,55 @@
     <div class="container">
         <div class="row">
             <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Contato não encontrado.</div>-->
             </div>
         </div>
 
         <form id="form-contato">
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label for="inputId">ID Planta</label>
-                    <input type="text" class="form-control" id="inputId" placeholder="Usuario" disabled>
+                    <label for="inputId">Id</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
                 </div>
                 <div class="col-sm-8">
-                    <label for="inputNome">Nome da Planta (*)</label>
-                    <input type="text" class="form-control" id="inputNome" required placeholder="Informe o nome da Planta">
+                    <label for="inputNome">Nome Planta(*)</label>
+                    <input type="text" class="form-control" id="inputNome" required
+                        placeholder="Informe o nome da planta">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for="inputLocal">Local de Plantio</label>
+                    <select class="form-control" id="inputLocal" required>
+                        <option value="">Selecione</option>
+                        <option value="areia">Areia</option>
+                        <option value="terra">Terra</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                <div class="col-sm-7">
+                    <label for="inputEmail">Nome Científico</label>
+                    <input type="text" class="form-control" id="inputCientifico" required
+                        placeholder="Informe o nome científico">
                 </div>
             </div>
             <div class="form-group row">
                 <div class="col-sm-6">
-                    <label for="inputCientifico">Nome Científico</label>
-                    <input type="text" class="form-control" id="inputCientifico" required placeholder="Informe o nome Científico">
+                    <label for="inputCidade">Idade (*)</label>
+                    <input type="number" class="form-control" id="inputIdade" placeholder="Informe a idade">
                 </div>
-                <div class = "col-sm-6">
-                    <label for="inputLocal">Tipo de Plantio (*)</label>
-                    <select id="inputLocal" class="form-control" required>
-                        <option value="">Selecione...</option>
-                        <option value="areia">Areia</option>
-                        <option value="terra">Terra</option>
-                        <option value ="parede">Parede</option>
-                    </select>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <small>(*) Campos obrigatórios</small>
+                    </div>
                 </div>
-                <div class = "col-sm-12">
-                    <label for="inputIdade">Idade (*)</label>
-                    <input type = "number" class = "form-control" id = "inputIdade" required placeholder="Informe a idade da Planta">
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
+                        <a href="lista_contatos.html"><input type="button" class="btn btn-warning" id="btnClear"
+                                value="Pesquisar Contatos"></a>
+                    </div>
                 </div>
-            </div>
-           
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <small>(*) Campos obrigatórios</small>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-12">
-                    <input type="button" class="btn btn-success" id="btnInsert" value="Inserir">
-                    <input type="button" class="btn btn-warning" id="btnUpdate" value="Alterar">
-                    <input type="button" class="btn btn-danger" id="btnDelete" value="Excluir">
-                    <input type="button" class="btn btn-secondary" id="btnClear" value="Limpar Form">
-                    <a href="lista_contatos.html"><input type="button" class="btn btn-warning" id="btnClear" value="Pesquisar Plantas"></a>
-                </div>
-            </div>
         </form>
 
         <div class="row">
@@ -74,9 +74,11 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
-                            <th scope="col">Nome Científico</th>
-                            <th scope="col">Local de Plantio</th>
+                            <th scope="col">Local</th>
+                            <th scope="col">Científico</th>
                             <th scope="col">Idade</th>
+                            <th scope="col">Usuário</th>
+
                         </tr>
                     </thead>
                     <tbody id="table-contatos">
@@ -96,7 +98,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="CRUD.js"></script>
+    <script src="sprint3.js"></script>
     <script>
         function exibeContatos() {
             // Remove todas as linhas do corpo da tabela
@@ -104,12 +106,13 @@
 
             // Popula a tabela com os registros do banco de dados
             for (i = 0; i < db.data.length; i++) {
-                let contato = db.data[i];    
+                let contato = db.data[i];
                 $("#table-contatos").append(`<tr><td scope="row">${contato.id}</td>
                                                 <td>${contato.nome}</td>
-                                                <td>${contato.cientifico}</td>
                                                 <td>${contato.local}</td>
+                                                <td>${contato.cientifico}</td>
                                                 <td>${contato.idade}</td>
+                                                <td>${contato.logado}</td>
                                             </tr>`);
             }
         }
@@ -124,16 +127,17 @@
                 }
 
                 // Obtem os valores dos campos do formulário
+                var logado = localStorage.getItem('logado');
                 let campoNome = $("#inputNome").val();
                 let campoCientifico = $("#inputCientifico").val();
-                let campoIdade = $("#inputIdade").val();
+                let campoIdade = $('#inputIdade').val();
                 let campoLocal = $("#inputLocal").val();
-                campoLocal = campoLocal.charAt(0).toUpperCase() + campoLocal.slice(1); // capitalize the first letter
-                let contato = { 
-                 nome: campoNome, 
-                 cientifico: campoCientifico, 
-                 local: campoLocal, 
-                 idade: campoIdade 
+                let contato = {
+                    nome: campoNome,
+                    cientifico: campoCientifico,
+                    idade: campoIdade,
+                    local: campoLocal,
+                    logado: logado
                 };
 
                 insertContato(contato);
@@ -154,15 +158,18 @@
                     return;
                 }
                 let campoNome = $("#inputNome").val();
-                let campoCientifico = $("#inputCientifico").val();
-                let campoIdade = $("#inputIdade").val();
-                let campoLocal = $("#inputLocal").val();
-                campoLocal = campoLocal.charAt(0).toUpperCase() + campoLocal.slice(1); // capitalize the first letter
-                let contato = { 
-                 nome: campoNome, 
-                 cientifico: campoCientifico, 
-                 local: campoLocal, 
-                 idade: campoIdade 
+                let campoTelefone = $("#inputTelefone").val();
+                let campoEmail = $("#inputEmail").val();
+                let campoCidade = $("#inputCidade").val();
+                let campoCategoria = $("#inputCategoria").val();
+                let campoSite = $('#inputSite').val();
+                let contato = {
+                    nome: campoNome,
+                    telefone: campoTelefone,
+                    email: campoEmail,
+                    cidade: campoCidade,
+                    categoria: campoCategoria,
+                    website: campoSite
                 };
 
                 updateContato(parseInt(campoId), contato);
@@ -211,9 +218,11 @@
 
                 $("#inputId").val(colunas[0].innerText);
                 $("#inputNome").val(colunas[1].innerText);
-                $("#inputCientifico").val(colunas[2].innerText);
-                $("#inputLocal").val(colunas[3].innerText);
-                $("#inputIdade").val(colunas[4].innerText);
+                $("#inputTelefone").val(colunas[2].innerText);
+                $("#inputEmail").val(colunas[3].innerText);
+                $("#inputCidade").val(colunas[4].innerText);
+                $("#inputCategoria").val(colunas[5].innerText);
+                $("#inputSite").val(colunas[6].innerText);
             });
 
             exibeContatos();

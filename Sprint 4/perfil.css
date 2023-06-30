@@ -1,6 +1,13 @@
 body{
-    background: linear-gradient(180deg, rgba(19, 239, 8, 0.427) 28.65%, rgba(255, 255, 255, 0.004) 100%);
-    text-align: center;
+    background-image: url('imagens/wallpaperflare.com_wallpaper\ \(2\).jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #ffffff;
+}
+.info, table{
+    font-size:x-large;
+    
 }
 label {
     font-weight: bolder;
@@ -19,10 +26,24 @@ label {
  h1 {
      text-align: center;
  }
+ tr{
+    color: #ffffff;
+ }
  #msg {
      height: 60px;
  }
  #grid-contatos tbody {
      cursor: pointer;
  }
- 
+ #container-pai{
+    display: flex;
+ }
+ #container{
+    display: flex;
+ }
+ #cadastro{
+    padding: 100px;
+ }
+#botao-adicionar{
+    width: 50px;
+}
