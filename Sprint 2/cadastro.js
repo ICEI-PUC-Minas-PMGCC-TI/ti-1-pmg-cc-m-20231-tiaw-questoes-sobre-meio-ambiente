@@ -29,7 +29,7 @@ function salvarUsuario() {
         email: email,
         usuario: usuario,
         senha: senha,
-        confirmarSenha: confirmarSenha
+        confirmarSenha: confirmarSenha,
     };
     //Alertar caso senha e confirmarsenha difentes
     if (senha == confirmarSenha) {
@@ -42,7 +42,7 @@ function salvarUsuario() {
         // Armazena os dados atualizados no localStorage com um nome específico
         localStorage.setItem('Cadastro', dadosJSON);
 
-        window.location.href = "../Sprint 4/home.html";
+        window.location.href = "../Sprint 4/login.html";
     }
     else {
         alert("SENHA E CONFIRMAR SENHA DIFERENTES");

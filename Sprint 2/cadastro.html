@@ -18,44 +18,57 @@
 </head>
 
 <body>
-    <header>
-
-        <nav>
-            <div class="nav-bar">
-                <i class='bx bx-menu sidebarOpen'></i>
-                <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
-
-                <div class="menu">
-                    <ul class="nav-links">
-                        <li><a href="../Sprint 4/home.html">Página Principal</a></li>
-                        <li><a href="perfil.html">Perfil</a></li>
-                        <li><a href="#">Quem Somos</a></li>
-                        <li><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-                        <li><a href="../Sprint 4/login.html">Login</a></li>
-
-                    </ul>
-                </div>
-
-                <div class="darkLight-searchBox">
-                    <div class="dark-light">
-                        <i class='bx bx-moon moon'></i>
-                        <i class='bx bx-sun sun'></i>
-                    </div>
-
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class='bx bx-x cancel'></i>
-                            <i class='bx bx-search search'></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input type="text" placeholder="Search...">
-                            <i class='bx bx-search'></i>
-                        </div>
-                    </div>
-                </div>
+    <nav>
+        <div class="nav-bar">
+          <i class='bx bx-menu sidebarOpen'></i>
+          <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+          
+          <div class="menu">
+            <ul class="nav-links">
+              <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+              <li id="login-link"><a href="login.html">Login</a></li>
+            </ul>
+          </div>
+      
+          <div class="darkLight-searchBox">
+            <div class="dark-light">
+              <i class='bx bx-moon moon'></i>
+              <i class='bx bx-sun sun'></i>
             </div>
-        </nav>
+            
+            <div class="searchBox">
+              <div class="searchToggle">
+                <i class='bx bx-x cancel'></i>
+                <i class='bx bx-search search'></i>
+              </div>
+              
+              <div class="search-field">
+                <input type="text" placeholder="Search...">
+                <i class='bx bx-search'></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+      <script>
+      window.onload = function() {
+        var logado = localStorage.getItem("logado");
+      
+        if (logado == "true") {
+          var accountLink = document.getElementById("account-link");
+          accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+          var loginLink = document.getElementById("login-link");
+          loginLink.innerHTML = "<button onclick='logOut()' id = 'btnlogout'>Logout</button>"; // Substitui o link Login por um botão Logout que chama a função logOut()
+        }
+      };
+      
+      function logOut() {
+        localStorage.setItem('logado',false);
+        window.location.href = "home.html";
+      }
+      </script>
+      
     </header>
     <br>
     <br>
@@ -185,6 +198,7 @@
         body {
             margin: 0;
             overflow-x: hidden;
+            height:880px;
         }
 
         body.dark {
@@ -201,6 +215,7 @@
             font-family: 'Play', sans-serif;
             text-align: center;
             background-color: var(--footer-color);
+            
             /* Adicionei esta linha */
         }
 
@@ -214,6 +229,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            display: inline-block;
         }
 
         .footer .row a {
@@ -252,10 +268,12 @@
     <footer>
         <div class="footer">
             <div class="row">
-                <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-                <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
-                <a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a>
-                <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+                <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+                <li><a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+            </ul>
             </div>
 
             <div class="row">

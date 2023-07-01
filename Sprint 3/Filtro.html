@@ -7,11 +7,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastro de Contatos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="../Sprint 2/cadastro.css">
 </head>
-
+<nav>
+    <div class="nav-bar">
+      <i class='bx bx-menu sidebarOpen'></i>
+      <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+      
+      <div class="menu">
+        <ul class="nav-links">
+          <li><a href="home.html">Página Principal</a></li>
+          <li><a href="#">Quem Somos</a></li>
+          <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+          <li id="login-link"><a href="login.html">Login</a></li>
+        </ul>
+      </div>
+  
+      <div class="darkLight-searchBox">
+        <div class="dark-light">
+          <i class='bx bx-moon moon'></i>
+          <i class='bx bx-sun sun'></i>
+        </div>
+        
+        <div class="searchBox">
+          <div class="searchToggle">
+            <i class='bx bx-x cancel'></i>
+            <i class='bx bx-search search'></i>
+          </div>
+          
+          <div class="search-field">
+            <input type="text" placeholder="Search...">
+            <i class='bx bx-search'></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <script>
+  window.onload = function() {
+    var logado = localStorage.getItem("logado");
+  
+    if (logado == "true") {
+      var accountLink = document.getElementById("account-link");
+      accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+      var loginLink = document.getElementById("login-link");
+      loginLink.innerHTML = "<button onclick='logOut()' id = 'btnlogout'>Logout</button>"; // Substitui o link Login por um botão Logout que chama a função logOut()
+    }
+  };
+  
+  function logOut() {
+    localStorage.setItem('logado',false);
+    window.location.href = "home.html";
+  }
+  </script>
 <body onload="ListaContatos()">
-    <h1>Listagem de Contatos</h1>
+    <h1>Plantas de todos os Usuários do Site!</h1>
 
     <div class="container">
         <div class="row">
@@ -22,30 +73,25 @@
 
         <div class="row">
             <div id="msg" class="col-sm-2 offset-sm-10 ">
-                <a href="index.html"><input type="button" class="btn btn-warning" id="btnClear" value="Cadastro"></a>
+                <a href="../Sprint 4/perfil.html"><input type="button" class="btn btn-warning" id="btnClear"
+                        value="Voltar"></a>
             </div>
-        </div>        
-        
-        <form id="form-contato">            
+        </div>
+        <br>
+        <form id="form-contato">
             <div class="form-group row">
                 <div class="col-sm-4">
                     <select name="filtro_cidade" id="filtro_cidade" onchange="ListaContatos()" class="form-control">
-                        <option value="">Selecione a Cidade</option>
-                        <option value="Betim">Betim</option>
-                        <option value="Belo Horizonte">Belo Horizonte</option>
-                        <option value="Rio de Janeiro">Rio de Janeiro</option>
-                        <option value="São Paulo">São Paulo</option>
-                        <option value="Goiânia">Goiânia</option>
-                    </select>                    
+                        <option value="">Selecione o Local</option>
+                        <option value="Areia">Areia</option>
+                        <option value="Terra">Terra</option>
+                        <option value="Outro">Outro</option>
+                     </select>
                 </div>
                 <div class="col-sm-8">
-                    <select name="filtro_categoria" id="filtro_categoria" onchange="ListaContatos()"  class="form-control">
-                        <option value="">Selecione a Categoria</option>
-                        <option value="amigos">Amigos</option>
-                        <option value="familia">Familia</option>
-                        <option value="trabalho">Trabalho</option>
-                    </select>
-                </div>
+                  <input type="text" id="filtro_categoria" oninput="ListaContatos()" class="form-control" placeholder="Nome Científico">
+              </div>
+              
             </div>
         </form>
 
@@ -56,12 +102,11 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Telefone</th>
-                            <th scope="col">E-mail</th>
-                            <th scope="col">Cidade</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Site</th>
+                            <th scope="col">Nome Planta</th>
+                            <th scope="col">Nome Científico</th>
+                            <th scope="col">Local de Plantio</th>
+                            <th scope="col">Idade</th>
+                            <th scope="col">Usuario</th>
                         </tr>
                     </thead>
                     <tbody id="table-contatos">
@@ -70,36 +115,46 @@
             </div>
         </div>
     </div>
-
+    <style>
+      body{
+        text-align: center;
+      }
+    </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="app.js"></script>
+    <script src="sprint3.js"></script>
     <script>
         // função para listar na tabela os contatos que estão associados aos filtros 
         function ListaContatos() {
-            
+
+            var db = JSON.parse(localStorage.getItem('db_contato'));
+            console.log(db)
+            if (!db) {
+                db = db_contatos_inicial
+            };
             // Obtem os dados informados pelo usuário nos filtros
             let fc = document.getElementById('filtro_cidade').value;
+            console.log(fc)
             let fcg = document.getElementById('filtro_categoria').value;
+
 
             // limpa a lista de contatos apresentados
             $("#table-contatos").empty();
 
             // Popula a tabela com os registros do banco de dados
             for (let index = 0; index < db.data.length; index++) {
-                const contato = db.data[index];
+                const contato = db.data[index]; 
 
                 // Verifica se os dados do contato batem com os filtros
-                if (((contato.cidade == fc) || (fc == '')) &&
-                    ((contato.categoria == fcg) || (fcg == ''))) {
-                    
+                if (((contato.local == fc) || (fc == '')) &&
+                    ((contato.cientifico == fcg) || (fcg == ''))) {
+
                     // Inclui o contato na tabela    
                     $("#table-contatos").append(`<tr><td scope="row">${contato.id}</td>
                                                     <td>${contato.nome}</td>
-                                                    <td>${contato.telefone}</td>
-                                                    <td>${contato.email}</td>
-                                                    <td>${contato.cidade}</td>
-                                                    <td>${contato.categoria}</td>
-                                                    <td>${contato.website}</td>
+                                                    <td>${contato.cientifico}</td>
+                                                    <td>${contato.local}</td>
+                                                    <td>${contato.idade}</td>
+                                                    <td>${contato.logado}</td>
                                                 </tr>`);
                 }
             }

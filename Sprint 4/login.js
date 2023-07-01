@@ -1,5 +1,7 @@
 
+
 function logar() {
+    let logged = false;
     var login = document.getElementById('Login').value;
     var senha = document.getElementById('Senha').value;
     var dados = localStorage.getItem('Cadastro');
@@ -8,13 +10,17 @@ function logar() {
         console.log(dados);
         for (let i = 0; i < dados.length; i++) {
             if (dados[i].usuario === login && dados[i].senha === senha) {
-                localStorage.setItem('logado', login);
-                //window.location.href = "../Sprint 4/home.html";
-                console.log(login);
-                break;
+                logged = true;
+                usuario = dados[i].usuario;
+                localStorage.setItem('logado',logged)
+                localStorage.setItem('usuario',usuario)
             }
         }
     }
+    if (logged) {
+        window.location.href = "home.html";
+    }
+
     else {
 
         //faça algo aqui se o banco de dados estiver vazio

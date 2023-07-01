@@ -1,18 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="login.js"></script>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <title>Login</title>
 </head>
+
 <body>
-    <form>
-        <h3>Login</h3>
-        <input type="text" name="Login" id="Login" placeholder="Login">
-        <input type="password" name="Senha" id="Senha" placeholder="senha">
-    </form>
-    <button onclick="logar()">botão</button>
+    <!-- Header -->
+    <header>
+
+        <nav>
+            <div class="nav-bar">
+                <i class='bx bx-menu sidebarOpen'></i>
+                <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+
+
+                <div class="darkLight-searchBox">
+                    <div class="dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
+                    </div>
+
+                    <div class="searchBox">
+                        <div class="searchToggle">
+                            <i class='bx bx-x cancel'></i>
+                            <i class='bx bx-search search'></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="center-screen">
+        <form>
+            <h1>Login</h1>
+            <input type="text" name="Login" id="Login" placeholder="Usuario">
+            <input type="password" name="Senha" id="Senha" placeholder="senha">
+        </form>
+        <button onclick="logar()">Login</button>
+    </div>
+    <style>
+        .center-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px; /* ajuste conforme necessário */
+            width: 300px; /* ajuste conforme necessário */
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 18px; /* ajuste conforme necessário */
+            width: 300px; /* ajuste conforme necessário */
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+    <script>
+
+        const body = document.querySelector("body"),
+            nav = document.querySelector("nav"),
+            modeToggle = document.querySelector(".dark-light"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+
+        let getMode = localStorage.getItem("mode");
+        if (getMode && getMode === "dark-mode") {
+            body.classList.add("dark");
+        }
+
+        // js code to toggle dark and light mode
+        modeToggle.addEventListener("click", () => {
+            modeToggle.classList.toggle("active");
+            body.classList.toggle("dark");
+
+            // js code to keep user selected mode even page refresh or file reopen
+            if (!body.classList.contains("dark")) {
+                localStorage.setItem("mode", "light-mode");
+            } else {
+                localStorage.setItem("mode", "dark-mode");
+            }
+        });
+
+        // js code to toggle search box
+        searchToggle.addEventListener("click", () => {
+            searchToggle.classList.toggle("active");
+        });
+
+
+        //   js code to toggle sidebar
+        sidebarOpen.addEventListener("click", () => {
+            nav.classList.add("active");
+        });
+
+        body.addEventListener("click", e => {
+            let clickedElm = e.target;
+
+            if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                nav.classList.remove("active");
+            }
+        });
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Footer -->
+    <style>
+        :root {
+            --body-color: #dfd7b6;
+            --text-color: #FFF;
+            --search-bar: #F2F2F2;
+            --search-text: #010718;
+            --footer-color: #d2c79d;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        body.dark {
+            --body-color: #383938;
+            --nav-color: #000000;
+            --side-nav: #525653;
+            --text-color: #fcfcfc;
+            --search-bar: #242526;
+            --footer-color: #000000;
+        }
+
+        .footer {
+            padding: 30px px;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            background-color: var(--footer-color);
+            /* Adicionei esta linha */
+        }
+
+        .footer .row {
+            width: 100%;
+            margin: 1% 0%;
+            padding: 0.6% 0%;
+            color: gray;
+            font-size: 0.8em;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+            margin: 0 30px;
+        }
+
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0 5px;
+        }
+
+        .footer .row a span {
+            margin-left: 5px;
+        }
+
+        @media (max-width: 375px) {
+            .footer {
+                text-align: center;
+                padding: 5%;
+            }
+
+            .footer .row {
+                flex-direction: column;
+            }
+
+            .footer .row a {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                <a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a>
+                <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Quem somos</a></li>
+                    <li><a href="#">Nossos Serviços</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
