@@ -3,78 +3,80 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Website Exemplo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <script src="../Sprint 2/cadastro.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script2.js">
+        
+    </script>
 </head>
 
-<body>
-    <!-- Header -->
-    <nav>
-        <div class="nav-bar">
-          <i class='bx bx-menu sidebarOpen'></i>
-          <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
-          
-          <div class="menu">
-            <ul class="nav-links">
-              <li><a href="home.html">Página Principal</a></li>
-              <li><a href="../Forum/Forum/forum.html">Fórum</a></li>
-              <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-              <li id="login-link"><a href="login.html">Login</a></li>
-            </ul>
-          </div>
-      
-          <div class="darkLight-searchBox">
-            <div class="dark-light">
-              <i class='bx bx-moon moon'></i>
-              <i class='bx bx-sun sun'></i>
-            </div>
-            
-            <div class="searchBox">
-              <div class="searchToggle">
-                <i class='bx bx-x cancel'></i>
-                <i class='bx bx-search search'></i>
-              </div>
-              
-              <div class="search-field">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-      
-      <script>
-      window.onload = function() {
-        var logado = localStorage.getItem("logado");
-      
-        if (logado == "true") {
-          var accountLink = document.getElementById("account-link");
-          accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
-          var loginLink = document.getElementById("login-link");
-          loginLink.innerHTML = "<button onclick='logOut()' id = 'btnlogout'>Logout</button>"; // Substitui o link Login por um botão Logout que chama a função logOut()
-        }
-      };
-      
-      function logOut() {
-        localStorage.setItem('logado',false);
-        window.location.href = "home.html";
-      }
-      </script>
-      
-    </header>
-    <br>
-    <br>
+<body onload="obterDadosLocalStorage()">
+    <header>
 
-    <!--Main-->
-    
+        <!-- Header -->
+        <nav>
+            <div class="nav-bar">
+              <i class='bx bx-menu sidebarOpen'></i>
+              <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+              
+              <div class="menu">
+                <ul class="nav-links">
+                  <li><a href="home.html">Página Principal</a></li>
+                  <li><a href="../Forum/Forum/forum.html">Fórum</a></li>
+                  <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                  <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+              </div>
+          
+              <div class="darkLight-searchBox">
+                <div class="dark-light">
+                  <i class='bx bx-moon moon'></i>
+                  <i class='bx bx-sun sun'></i>
+                </div>
+                
+                <div class="searchBox">
+                  <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                  </div>
+                  
+                  <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+          
+          <script>
+          window.onload = function() {
+            var logado = localStorage.getItem("logado");
+          
+            if (logado == "true") {
+              var accountLink = document.getElementById("account-link");
+              accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+              var loginLink = document.getElementById("login-link");
+              loginLink.innerHTML = "<button onclick='logOut()' id = 'btnlogout'>Logout</button>"; // Substitui o link Login por um botão Logout que chama a função logOut()
+            }
+          };
+          
+          function logOut() {
+            localStorage.setItem('logado',false);
+            window.location.href = "home.html";
+          }
+          </script>
+          
+        </header>
+
+    <main>
+        <section>
+            <div id="card-container">
+                
+            
+        </section>
+    </main>
     <script>
 
         const body = document.querySelector("body"),
@@ -202,6 +204,10 @@
         }
     </style>
     <footer>
+        <a href="#" onclick="limpaRespostas('forumData');">Limpar as respostas</a>
+        <a href="criarpergunta.html" >Enviar uma pergunta</a>
+        <a href="#" onclick="obterDadosLocalStorage()">Carregar Pergunta</a>
+        <a href="#" onclick="obterDadosJSON()">Carregar Pergunta(JSON)</a>
         <div class="footer">
             <div class="row">
                 <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
@@ -218,12 +224,13 @@
                 </ul>
             </div>
         </div>
+        
     </footer>
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3 meu-card.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      
+       
+    </script>
 </body>
-
-
 
 </html>
