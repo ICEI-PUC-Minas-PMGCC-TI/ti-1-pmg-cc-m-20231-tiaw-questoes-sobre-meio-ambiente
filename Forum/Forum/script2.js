@@ -164,15 +164,17 @@ function obterDadosJSON() {
   };
   request.send();
 }
-
 function obterDadosLocalStorage() {
   var jsonDataArray = JSON.parse(localStorage.getItem('TopicosData'));
   if (jsonDataArray) {
-    console.log(jsonDataArray);
-    exibirPerguntas(jsonDataArray);
+      console.log(jsonDataArray);
+      exibirPerguntas(jsonDataArray);
   } else {
-    console.log('Nenhum dado encontrado no LocalStorage.');
+      console.log('Nenhum dado encontrado no LocalStorage.');
   }
+  
+  // Define a variável CSS --text-color para preto
+  document.documentElement.style.setProperty('--text-color', '#000000');
 }
 
 function exibirPerguntas(jsonDataArray) {
@@ -180,25 +182,26 @@ function exibirPerguntas(jsonDataArray) {
   jsonDataArray.forEach(function(jsonData, index) {
     var respostas = buscaRespostas(index);
     cardHTML += `
-    <div calss="card-style">  
-    <div class="user-info">
-        <p class="card-user">${jsonData.nomedeusuario} // ${jsonData.horario}</p><br><br>
+    <div class="card-style">  
+      <div class="user-info">
+          <p class="card-user">${jsonData.nomedeusuario} // ${jsonData.horario}</p><br><br>
       </div>
       <h2 class="card-title">${jsonData.Pergunta}</h2><br>
       <p class="card-subject">${jsonData.assunto}</p><br>
       <p class="card-text">${jsonData.textpergunta}</p><br><br>
 
-      <button class="toggle-button${index}" onclick="toggleAnswerForm(${index})">Responder</button>
-
-      <div class="as-respostas">
+      <button style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; margin: 4px 2px; cursor: pointer;" class="toggle-button${index}" onclick="toggleAnswerForm(${index})">Responder</button>
+      <br>
+      
+      <div class="as-respostas" style="background-color: #F9F9F9; border: 1px solid #C6C6C6; padding: 20px; margin: 10px 0; border-radius: 5px; color: #000000;">
         ${respostas}
       </div>
 
       <form id="answer-form${index}" style="display: none;"><br>
         <label for="resposta">Resposta:</label>
-        <textarea id="resposta-input${index}" class="answer-input" placeholder="Digite sua resposta"></textarea>
-        <div class="button-container">
-          <button type="button" class="submit-button" onclick="enviarResposta(${index})">Enviar</button>
+        <textarea id="resposta-input${index}" class="answer-input" placeholder="Digite sua resposta" style="width: 100%; padding: 12px 20px; margin: 8px 0; box-sizing: border-box;"></textarea>
+        <div class="button-container" style="display: flex; justify-content: center; margin: 20px 0;">
+          <button type="button" class="submit-button" style="background-color: #4CAF50; border: none; color: white; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px; margin: 4px 2px; cursor: pointer;" onclick="enviarResposta(${index})">Enviar</button>
         </div>
       </form>
       </div>
@@ -207,3 +210,6 @@ function exibirPerguntas(jsonDataArray) {
 
   document.getElementById('card-container').innerHTML = cardHTML;
 }
+
+
+

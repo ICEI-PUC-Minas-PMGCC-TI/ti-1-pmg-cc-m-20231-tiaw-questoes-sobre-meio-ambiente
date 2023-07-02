@@ -42,52 +42,70 @@
     <script src="login.js"></script>
 </head>
 
-<body onload="init(); navbar(); carregaPerfil() ">
+<body onload="init(); navbar(); carregaPerfil(); mudanca() ">
     <!-- Header -->
-    <header>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="home.html">Semeando Em Casa</a></span>
 
-        <nav>
-            <div class="nav-bar">
-                <i class='bx bx-menu sidebarOpen'></i>
-                <span class="logo navLogo"><a href="home.html">Semeando Em Casa</a></span>
-                <div class="menu">
-                    <ul class="nav-links">
-                        <li><a href="home.html">Página Principal</a></li>
-                        <li><a href="#">Quem Somos</a></li>
-                        <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-                        <li id="login-link"><a href="login.html">Login</a></li>
-                    </ul>
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="home.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
                 </div>
 
-                <div class="darkLight-searchBox">
-                    <div class="dark-light">
-                        <i class='bx bx-moon moon'></i>
-                        <i class='bx bx-sun sun'></i>
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
                     </div>
 
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class='bx bx-x cancel'></i>
-                            <i class='bx bx-search search'></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input type="text" placeholder="Search...">
-                            <i class='bx bx-search'></i>
-                        </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <script>
 
-            function logOut() {
-                localStorage.setItem('logado', false);
-                window.location.href = "home.html";
-                localStorage.setItem('usuario', "");
+    <script>
+        function mudanca() {
+            var logado = localStorage.getItem("logado");
+
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
             }
-        </script>
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+        };
+
+        function logOut() {
+            localStorage.setItem('logado', false);
+            window.location.href = "home.html";
+        }
+    </script>
+
     </header>
     <br>
     <br>
@@ -102,6 +120,9 @@
             <h2>Informações do Usuário</h2>
             <p><strong>Nome de usuário:</strong> <span id="usuario"></span></p>
             <p><strong>Email:</strong> <span id="email"></span></p>
+            <div>
+                <button class="btn btn-danger" onclick="logOut()">LogOut</button>
+            </div>
         </div>
 
         <div class="row">
@@ -126,7 +147,6 @@
                             <td id="local"></td>
                             <td id="idade"></td>
                             <td id="usuario"></td>
-                            <td id=""></td>
                         </tr>
                     </tbody>
                 </table>
@@ -184,6 +204,7 @@
         <script>
             function init() {
 
+
                 console.log("funfando")
                 var arrayPlantas = acharDados();
                 var usuario = localStorage.getItem('usuario');
@@ -215,7 +236,7 @@
                     // Reexibe os contatos
 
                     exibeContatos(arrayPlantas);
-                    //window.location.href = "perfil.html"
+                    window.location.href = "perfil.html"
                     // Limpa o formulario
                     $("#form-contato")[0].reset();
                 });
@@ -314,6 +335,7 @@
             modeToggle.addEventListener("click", () => {
                 modeToggle.classList.toggle("active");
                 body.classList.toggle("dark");
+                body.classList.toggle("dark-mode");
 
                 // js code to keep user selected mode even page refresh or file reopen
                 if (!body.classList.contains("dark")) {
@@ -352,6 +374,7 @@
                 --search-bar: #F2F2F2;
                 --search-text: #010718;
                 --footer-color: #d2c79d;
+
             }
 
             body {
@@ -359,6 +382,8 @@
                 overflow-x: hidden;
                 display: flex;
                 flex-direction: column;
+                color: var(--light-text-color);
+
 
             }
 
@@ -370,6 +395,8 @@
                 --search-bar: #242526;
                 --footer-color: #000000;
                 --text-color: #FFFFFFFF;
+                color: var(--dark-text-color);
+
             }
 
             p,
@@ -379,6 +406,11 @@
             h4,
             h5,
             h6 {
+                color: var(--text-color)
+            }
+
+            form,
+            th {
                 color: var(--text-color)
             }
 
@@ -434,26 +466,26 @@
                 }
             }
         </style>
-    <footer>
-        <div class="footer">
-            <div class="row">
-                <ul>
-                <li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
-                <li><a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
-            </ul>
-            </div>
+        <footer>
+            <div class="footer">
+                <div class="row">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a></li>
+                    </ul>
+                </div>
 
-            <div class="row">
-                <ul>
-                    <li><a href="#">Quem somos</a></li>
-                    <li><a href="#">Nossos Serviços</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                </ul>
+                <div class="row">
+                    <ul>
+                        <li><a href="#">Quem somos</a></li>
+                        <li><a href="#">Nossos Serviços</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </footer>
+        </footer>
 </body>
 
 </html>

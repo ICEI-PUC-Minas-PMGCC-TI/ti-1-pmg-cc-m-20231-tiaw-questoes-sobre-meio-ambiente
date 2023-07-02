@@ -1,13 +1,12 @@
+
 function enviarPergunta() {
 
     console.log("Iniciando o processo de envio da Pergunta...");
 
     // Obter os dados da pergunta
-    var cardUserElement = document.getElementById("username");
     var cardTitleElement = document.getElementById("titulo");
     var cardSubjectElement = document.getElementById("Assunto");
 
-    var cardUser = cardUserElement.value;
     var cardTitle = cardTitleElement.value;
     var cardSubject = cardSubjectElement.value;
 
@@ -23,10 +22,12 @@ function enviarPergunta() {
     var data_hora_atual = new Date();
     var datahora = data_hora_atual.toLocaleString();
 
+    var usuario = localStorage.getItem('usuario')
+
     // Criar um objeto com os dados da pergunta
     var dados = {
         
-            nomedeusuario: cardUser,
+            nomedeusuario: usuario,
             horario: datahora,
             Pergunta: cardTitle,
             assunto: cardSubject,
@@ -59,10 +60,12 @@ function enviarPergunta() {
     localStorage.setItem("TopicosData", newData);
 
     // Limpar os campos de entrada de texto e textarea
-    cardUserElement.value = "";
     cardTitleElement.value = "";
     cardSubjectElement.value = "";
     perguntaInput.value = "";
 
     console.log("Dados armazenados no LocalStorage com a chave 'TopicosData'.");
+    window.location.href = "forum.html"
+
+    
 }

@@ -28,6 +28,7 @@ if (!db) {
     db = db_contato_inicial
 };
 function carregaPerfil() {
+    console.log("teste")
     var nomeUsuario = localStorage.getItem('usuario');
     var cadastro = JSON.parse(localStorage.getItem('Cadastro'))
     var email = null;
@@ -64,23 +65,59 @@ function acharDados() {
     }
     return arrayPlantas;
 }
+// Função que atualiza a cor do texto da tabela com base no modo
+function atualizaCorTabela() {
+    // Obtém o modo atual do localStorage
+    var mode = localStorage.getItem("mode");
+
+    // Obtém todas as células da tabela
+    var tableCells = document.querySelectorAll("#table-contatos td");
+
+    // Define a cor do texto com base no modo
+    var textColor = mode === "dark-mode" ? "white" : "black";
+
+    // Atualiza a cor do texto de todas as células da tabela
+    tableCells.forEach(function (cell) {
+        cell.style.color = textColor;
+    });
+}
+
+// Chama a função para atualizar a cor da tabela quando a página é carregada
+window.onload = atualizaCorTabela;
+
+// Chama a função para atualizar a cor da tabela quando o modo é alterado
+modeToggle.addEventListener("click", atualizaCorTabela);
+
 function exibeContatos(parametro) {
     // Remove todas as linhas do corpo da tabela
-
     $("#table-contatos").html("");
 
     // Popula a tabela com os registros do banco de dados
     for (i = 0; i < parametro.length; i++) {
         let contato = parametro[i];
-        $("#table-contatos").append(`<tr><td scope="row">${contato.id}</td>
-                                        <td>${contato.nome}</td>
-                                        <td>${contato.local}</td>
-                                        <td>${contato.cientifico}</td>
-                                        <td>${contato.idade}</td>
-                                        <td>${contato.logado}</td>
-                                    </tr>`);
+        let novaLinha = $("<tr><td scope='row'>" + contato.id + "</td><td>" +
+            contato.nome + "</td><td>" +
+            contato.local + "</td><td>" +
+            contato.cientifico + "</td><td>" +
+            contato.idade + "</td><td>" +
+            contato.logado + "</td></tr>");
+
+        // Verifica qual tema está ativo
+        if ($('body').hasClass('dark')) {
+            // Se o modo dark estiver ativo, aplica a cor do texto branco
+            novaLinha.css("color", "white");
+        } else {
+            // Se o modo light estiver ativo, aplica a cor do texto preto
+            novaLinha.css("color", "black");
+        }
+
+        // Adiciona a nova linha à tabela
+        $("#table-contatos").append(novaLinha);
     }
+
+    atualizaCorTabela();
 }
+
 
 
 // Caso os dados já estejam no Local Storage, caso contrário, carrega os dados iniciais

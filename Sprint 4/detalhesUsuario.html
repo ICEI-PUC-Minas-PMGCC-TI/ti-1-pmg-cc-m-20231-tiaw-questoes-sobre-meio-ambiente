@@ -1,86 +1,109 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="login.js"></script>
-    <link rel="stylesheet" type="text/css" href="login.css">
-    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <title>Login</title>
+    <link href="home.css" rel="stylesheet">
+    <title>Descrição de Dados da API</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 400px;
+            max-height: 500px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Header -->
-    <header>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
 
-        <nav>
-            <div class="nav-bar">
-                <i class='bx bx-menu sidebarOpen'></i>
-                <span class="logo navLogo"><a href="home.html">Semeando Em Casa</a></span>
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="home.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
 
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
 
-                <div class="darkLight-searchBox">
-                    <div class="dark-light">
-                        <i class='bx bx-moon moon'></i>
-                        <i class='bx bx-sun sun'></i>
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
                     </div>
 
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class='bx bx-x cancel'></i>
-                            <i class='bx bx-search search'></i>
-                        </div>
-
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
                     </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div class="center-screen">
-        <form>
-            <h1>Login</h1>
-            <input type="text" name="Login" id="Login" placeholder="Usuario">
-            <input type="password" name="Senha" id="Senha" placeholder="senha">
-        </form>
-        <button onclick="logar()">Login</button>
-    </div>
-    <style>
-        .center-screen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
+        </div>
+    </nav>
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+
+    <script>
+        window.onload = function () {
+            var logado = localStorage.getItem("logado");
+
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
+            }
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+        };
+
+        function logOut() {
+            localStorage.setItem('logado', false);
+            window.location.href = "home.html";
         }
-        input {
-            margin: 10px;
-            padding: 10px;
-            font-size: 18px; /* ajuste conforme necessário */
-            width: 300px; /* ajuste conforme necessário */
-        }
-        button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 18px; /* ajuste conforme necessário */
-            width: 300px; /* ajuste conforme necessário */
-        }
-        body{
-            text-align: center;
-        }
-    </style>
+    </script>
+
+    </header>
+    
+    <div class="container">
+        <div class="image-container">
+            <img id="image" src="" alt="Imagem do item">
+        </div>
+        <div class="info-container">
+            <h2>Nome Científico:</h2>
+            <h2 id="nome-cientifico"></h2>
+            <h3>Nome Comum: </h3>
+            <h3 id="nome-comum"></h3>
+            <p>Descrição:</p>
+            <p id="descricao"></p>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <!--Main-->
+
     <script>
 
         const body = document.querySelector("body"),
@@ -99,6 +122,15 @@
         modeToggle.addEventListener("click", () => {
             modeToggle.classList.toggle("active");
             body.classList.toggle("dark");
+            var logoutButton = document.getElementById('btnlogout');
+
+            if (body.classList.contains('dark')) {
+                logoutButton.classList.remove('logout-button-light');
+                logoutButton.classList.add('logout-button-dark');
+            } else {
+                logoutButton.classList.remove('logout-button-dark');
+                logoutButton.classList.add('logout-button-light');
+            }
 
             // js code to keep user selected mode even page refresh or file reopen
             if (!body.classList.contains("dark")) {
@@ -106,18 +138,7 @@
             } else {
                 localStorage.setItem("mode", "dark-mode");
             }
-        });
-
-        // js code to toggle search box
-        searchToggle.addEventListener("click", () => {
-            searchToggle.classList.toggle("active");
-        });
-
-
-        //   js code to toggle sidebar
-        sidebarOpen.addEventListener("click", () => {
-            nav.classList.add("active");
-        });
+        })
 
         body.addEventListener("click", e => {
             let clickedElm = e.target;
@@ -128,8 +149,7 @@
         });
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <!-- Footer -->
     <style>
@@ -150,7 +170,7 @@
             --body-color: #383938;
             --nav-color: #000000;
             --side-nav: #525653;
-            --text-color: #ffffff;
+            --text-color: #fcfcfc;
             --search-bar: #242526;
             --footer-color: #000000;
         }

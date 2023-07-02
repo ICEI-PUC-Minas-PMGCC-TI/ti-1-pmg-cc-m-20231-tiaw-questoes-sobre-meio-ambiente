@@ -1,42 +1,39 @@
 /* ===== Google Font Import - Poppins ===== */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    transition: all 0.4s ease;;
+    transition: all 0.4s ease;
+    ;
 }
 
 /* ===== Colours ===== */
-:root{
+:root {
     --body-color: #faf1cc;
     --nav-color: #d2c79d;
     --side-nav: #ede1b6;
-    --text-color: #FFF;
+    --text-color: #000000;
     --search-bar: #F2F2F2;
     --search-text: #010718;
 }
 
-body{
+body {
     height: 100vh;
     background-color: var(--body-color);
 }
-#btnlogout{
-    background-color: #d2c79d;
-    color: #FFF;
-    font-size: 18px;
-}
-body.dark{
+
+body.dark {
     --body-color: #383938;
     --nav-color: #000000;
     --side-nav: #525653;
-    --text-color: #fcfcfc;
+    --text-color: #ffffff;
     --search-bar: #242526;
 }
 
-nav{
+nav {
     position: relative;
     left: 0;
     height: 70px;
@@ -45,12 +42,12 @@ nav{
     z-index: 100;
 }
 
-body.dark nav{
+body.dark nav {
     border: 1px solid #393838;
 
 }
 
-nav .nav-bar{
+nav .nav-bar {
     position: relative;
     height: 100%;
     max-width: 1000px;
@@ -62,7 +59,7 @@ nav .nav-bar{
     justify-content: space-between;
 }
 
-nav .nav-bar .sidebarOpen{
+nav .nav-bar .sidebarOpen {
     color: var(--text-color);
     font-size: 25px;
     padding: 5px;
@@ -70,28 +67,28 @@ nav .nav-bar .sidebarOpen{
     display: none;
 }
 
-nav .nav-bar .logo a{
+nav .nav-bar .logo a {
     font-size: 25px;
     font-weight: 500;
     color: var(--text-color);
     text-decoration: none;
 }
 
-.menu .logo-toggle{
+.menu .logo-toggle {
     display: none;
 }
 
-.nav-bar .nav-links{
+.nav-bar .nav-links {
     display: flex;
     align-items: center;
 }
 
-.nav-bar .nav-links li{
+.nav-bar .nav-links li {
     margin: 0 5px;
     list-style: none;
 }
 
-.nav-links li a{
+.nav-links li a {
     position: relative;
     font-size: 17px;
     font-weight: 400;
@@ -100,7 +97,7 @@ nav .nav-bar .logo a{
     padding: 10px;
 }
 
-.nav-links li a::before{
+.nav-links li a::before {
     content: '';
     position: absolute;
     left: 50%;
@@ -114,17 +111,17 @@ nav .nav-bar .logo a{
     transition: all 0.3s ease;
 }
 
-.nav-links li:hover a::before{
+.nav-links li:hover a::before {
     opacity: 1;
 }
 
-.nav-bar .darkLight-searchBox{
+.nav-bar .darkLight-searchBox {
     display: flex;
     align-items: center;
 }
 
 .darkLight-searchBox .dark-light,
-.darkLight-searchBox .searchToggle{
+.darkLight-searchBox .searchToggle {
     height: 40px;
     width: 40px;
     display: flex;
@@ -134,7 +131,7 @@ nav .nav-bar .logo a{
 }
 
 .dark-light i,
-.searchToggle i{
+.searchToggle i {
     position: absolute;
     color: var(--text-color);
     font-size: 22px;
@@ -142,41 +139,41 @@ nav .nav-bar .logo a{
     transition: all 0.3s ease;
 }
 
-.dark-light i.sun{
+.dark-light i.sun {
     opacity: 0;
     pointer-events: none;
 }
 
-.dark-light.active i.sun{
+.dark-light.active i.sun {
     opacity: 1;
     pointer-events: auto;
 }
 
-.dark-light.active i.moon{
+.dark-light.active i.moon {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchToggle i.cancel{
+.searchToggle i.cancel {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchToggle.active i.cancel{
+.searchToggle.active i.cancel {
     opacity: 1;
     pointer-events: auto;
 }
 
-.searchToggle.active i.search{
+.searchToggle.active i.search {
     opacity: 0;
     pointer-events: none;
 }
 
-.searchBox{
+.searchBox {
     position: relative;
 }
 
-.searchBox .search-field{
+.searchBox .search-field {
     position: absolute;
     bottom: -85px;
     right: 5px;
@@ -192,13 +189,13 @@ nav .nav-bar .logo a{
     transition: all 0.3s ease;
 }
 
-.searchToggle.active ~ .search-field{
+.searchToggle.active~.search-field {
     bottom: -74px;
     opacity: 1;
     pointer-events: auto;
 }
 
-.search-field::before{
+.search-field::before {
     content: '';
     position: absolute;
     right: 14px;
@@ -210,7 +207,7 @@ nav .nav-bar .logo a{
     z-index: -1;
 }
 
-.search-field input{
+.search-field input {
     height: 100%;
     width: 100%;
     padding: 0 45px 0 15px;
@@ -223,11 +220,11 @@ nav .nav-bar .logo a{
     background-color: var(--search-bar);
 }
 
-body.dark .search-field input{
+body.dark .search-field input {
     color: var(--text-color);
 }
 
-.search-field i{
+.search-field i {
     position: absolute;
     color: var(--nav-color);
     right: 15px;
@@ -235,16 +232,16 @@ body.dark .search-field input{
     cursor: pointer;
 }
 
-body.dark .search-field i{
+body.dark .search-field i {
     color: var(--text-color);
 }
 
 @media (max-width: 790px) {
-    nav .nav-bar .sidebarOpen{
+    nav .nav-bar .sidebarOpen {
         display: block;
     }
 
-    .menu{
+    .menu {
         position: fixed;
         height: 100%;
         width: 320px;
@@ -256,29 +253,29 @@ body.dark .search-field i{
         transition: all 0.4s ease;
     }
 
-    nav.active .menu{
+    nav.active .menu {
         left: -0%;
     }
 
-    nav.active .nav-bar .navLogo a{
+    nav.active .nav-bar .navLogo a {
         opacity: 0;
         transition: all 0.3s ease;
     }
 
-    
 
-    .logo-toggle .siderbarClose{
+
+    .logo-toggle .siderbarClose {
         color: var(--text-color);
         font-size: 24px;
         cursor: pointer;
     }
 
-    .nav-bar .nav-links{
+    .nav-bar .nav-links {
         flex-direction: column;
         padding-top: 30px;
     }
 
-    .nav-links li a{
+    .nav-links li a {
         display: block;
         margin-top: 20px;
     }
@@ -324,37 +321,48 @@ body.dark .search-field i{
     font-size: 2em;
     margin: 0% 1%;
 }
+
 .footer {
     position: relative;
     width: 100%;
-    z-index: 100; /* use a high z-index if other elements overlap */
+    z-index: 100;
+    /* use a high z-index if other elements overlap */
 }
-:root{
-    --text-light: rgba(255,255,255,0.6);
-    --text-lighter: rgba(255,255,255,0.9);
+
+:root {
+    --text-light: rgba(255, 255, 255, 0.6);
+    --text-lighter: rgba(255, 255, 255, 0.9);
     --spacing-s: 8px;
     --spacing-m: 16px;
     --spacing-l: 24px;
     --spacing-xl: 32px;
     --spacing-xxl: 64px;
     --width-container: 1200px;
-  }
-  
-  *{
+}
+
+* {
     border: 0;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  html{
+}
+
+html {
     height: 100%;
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
-  }
-  
-  body{
+}
+
+body {
     height: 100%;
-  }
-  
- 
+}
+
+.logout-button-light {
+    background-color: #d2c79d;
+    color: #000000;
+}
+
+.logout-button-dark {
+    background-color: #000000;
+    color: #FFF;
+}

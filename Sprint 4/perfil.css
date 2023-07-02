@@ -359,4 +359,34 @@ body.dark .search-field i{
   body{
     height: 100%;
   }
-  
+
+@media screen and (max-width: 992px) {
+    .perfil-container {
+        flex-direction: column;
+    }
+
+    .informacoes-usuario, .lista-plantas {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    h1, h2 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    nav ul.nav-links {
+        flex-direction: column;
+    }
+
+    nav ul.nav-links li {
+        margin-bottom: 10px;
+    }
+}
+
