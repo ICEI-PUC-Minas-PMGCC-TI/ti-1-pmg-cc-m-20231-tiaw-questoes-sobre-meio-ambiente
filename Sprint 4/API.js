@@ -2,12 +2,12 @@ const Key1 ="rHwAkmfzXTGty4tmSXrpEbGrQ81C0FvdpKbsSqZNd2jN3W1wIs";
 
 
 function lerImagem() {
-    var imagem = document.querySelector(imagem);
+    var imagem = "imagens/31.png"
   
       toDataURL(imagem, function(dataUrl) {
         imagem = dataUrl;
-        console.log('RESULT:', imagem)
-        //APIRequest(imagem);
+        //console.log('RESULT:', imagem)
+        APIRequest(imagem);
       })
   }
 
@@ -63,8 +63,9 @@ xhr.withCredentials = false;
 
 xhr.addEventListener("readystatechange", function() {
   if(this.readyState === 4) {
-    //console.log(this.responseText);
-    dados = JSON.parse(this.responseText);
+    console.log(this.responseText);
+    //dados = JSON.parse(this.responseText);
+    localStorage.setItem("dados", dados);
   }
 });
 
