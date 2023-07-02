@@ -11,70 +11,80 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
     <script src="../Sprint 2/cadastro.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="API.js">
+    
 </head>
 
 <body>
     <!-- Header -->
     <nav>
         <div class="nav-bar">
-          <i class='bx bx-menu sidebarOpen'></i>
-          <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
-          
-          <div class="menu">
-            <ul class="nav-links">
-              <li><a href="home.html">Página Principal</a></li>
-              <li><a href="../Forum/Forum/forum.html">Fórum</a></li>
-              <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-              <li id="login-link"><a href="login.html">Login</a></li>
-            </ul>
-          </div>
-      
-          <div class="darkLight-searchBox">
-            <div class="dark-light">
-              <i class='bx bx-moon moon'></i>
-              <i class='bx bx-sun sun'></i>
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="home.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
             </div>
-            
-            <div class="searchBox">
-              <div class="searchToggle">
-                <i class='bx bx-x cancel'></i>
-                <i class='bx bx-search search'></i>
-              </div>
-              
-              <div class="search-field">
-                <input type="text" placeholder="Search...">
-                <i class='bx bx-search'></i>
-              </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
+                    </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </nav>
-      
-      <script>
-      window.onload = function() {
-        var logado = localStorage.getItem("logado");
-      
-        if (logado == "true") {
-          var accountLink = document.getElementById("account-link");
-          accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
-          var loginLink = document.getElementById("login-link");
-          loginLink.innerHTML = "<button onclick='logOut()' id = 'btnlogout'>Logout</button>"; // Substitui o link Login por um botão Logout que chama a função logOut()
+    </nav>
+
+
+    <script>
+        window.onload = function () {
+            var logado = localStorage.getItem("logado");
+
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
+            }
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+        };
+
+        function logOut() {
+            localStorage.setItem('logado', false);
+            window.location.href = "home.html";
         }
-      };
-      
-      function logOut() {
-        localStorage.setItem('logado',false);
-        window.location.href = "home.html";
-      }
-      </script>
-      
+    </script>
+
     </header>
     <br>
     <br>
 
     <!--Main-->
-    
+
     <script>
 
         const body = document.querySelector("body"),
@@ -93,6 +103,15 @@
         modeToggle.addEventListener("click", () => {
             modeToggle.classList.toggle("active");
             body.classList.toggle("dark");
+            var logoutButton = document.getElementById('btnlogout');
+
+            if (body.classList.contains('dark')) {
+                logoutButton.classList.remove('logout-button-light');
+                logoutButton.classList.add('logout-button-dark');
+            } else {
+                logoutButton.classList.remove('logout-button-dark');
+                logoutButton.classList.add('logout-button-light');
+            }
 
             // js code to keep user selected mode even page refresh or file reopen
             if (!body.classList.contains("dark")) {
@@ -100,18 +119,7 @@
             } else {
                 localStorage.setItem("mode", "dark-mode");
             }
-        });
-
-        // js code to toggle search box
-        searchToggle.addEventListener("click", () => {
-            searchToggle.classList.toggle("active");
-        });
-
-
-        //   js code to toggle sidebar
-        sidebarOpen.addEventListener("click", () => {
-            nav.classList.add("active");
-        });
+        })
 
         body.addEventListener("click", e => {
             let clickedElm = e.target;
@@ -123,15 +131,113 @@
 
     </script>
 
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <div class="card1" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card2" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card3" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-sm-4">
+                <div class="card4" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card5" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card6" style="width: 18rem;">
+                    <img class="card-img-top" src="..." alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's
+                            content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+    </div>
+    <script>
+        Window.onload = fullData();
+    </script>
     <!-- Footer -->
     <style>
+        @media (min-width: 580px) {
+            .footer {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+            }
+
+            body {
+                padding-bottom: 100px;
+                /* Ajuste este valor de acordo com a altura do seu footer */
+            }
+        }
+
         :root {
             --body-color: #dfd7b6;
-            --text-color: #FFF;
+            --text-color: #000000;
             --search-bar: #F2F2F2;
             --search-text: #010718;
             --footer-color: #d2c79d;
+        }
+
+        .col-sm-4 {
+            padding: 10px;
         }
 
         body {
