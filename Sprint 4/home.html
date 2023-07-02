@@ -17,71 +17,71 @@
 
 <body>
     <!-- Header -->
-    <nav>
-        <div class="nav-bar">
-            <i class='bx bx-menu sidebarOpen'></i>
-            <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+        <nav>
+            <div class="nav-bar">
+                <i class='bx bx-menu sidebarOpen'></i>
+                <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
 
-            <div class="menu">
-                <ul class="nav-links">
-                    <li><a href="home.html">Página Principal</a></li>
-                    <li id="forum-link"><a href="">Quem Somos</a></li>
-                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-                    <li id="login-link"><a href="login.html">Login</a></li>
-                </ul>
-            </div>
-
-            <div class="darkLight-searchBox">
-                <div class="dark-light">
-                    <i class='bx bx-moon moon'></i>
-                    <i class='bx bx-sun sun'></i>
+                <div class="menu">
+                    <ul class="nav-links">
+                        <li><a href="home.html">Página Principal</a></li>
+                        <li id="forum-link"><a href="">Quem Somos</a></li>
+                        <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                        <li id="login-link"><a href="login.html">Login</a></li>
+                    </ul>
                 </div>
 
-                <div class="searchBox">
-                    <div class="searchToggle">
-                        <i class='bx bx-x cancel'></i>
-                        <i class='bx bx-search search'></i>
+                <div class="darkLight-searchBox">
+                    <div class="dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
                     </div>
 
-                    <div class="search-field">
-                        <input type="text" placeholder="Search...">
-                        <i class='bx bx-search'></i>
+                    <div class="searchBox">
+                        <div class="searchToggle">
+                            <i class='bx bx-x cancel'></i>
+                            <i class='bx bx-search search'></i>
+                        </div>
+
+                        <div class="search-field">
+                            <input type="text" placeholder="Search...">
+                            <i class='bx bx-search'></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
 
-    <script>
-        window.onload = function () {
-            var logado = localStorage.getItem("logado");
+        <script>
+            window.onload = function () {
+                var logado = localStorage.getItem("logado");
 
-            if (logado == "true") {
-                var accountLink = document.getElementById("account-link");
-                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+                if (logado == "true") {
+                    var accountLink = document.getElementById("account-link");
+                    accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
 
-                var forumLink = document.getElementById("forum-link");
-                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+                    var forumLink = document.getElementById("forum-link");
+                    forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
 
-                var loginLink = document.getElementById("login-link");
-                loginLink.remove(); // Remove o link de Login quando logado
+                    var loginLink = document.getElementById("login-link");
+                    loginLink.remove(); // Remove o link de Login quando logado
+                }
+                else {
+                    var forumLink = document.getElementById("forum-link");
+                    forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+                }
+            };
+
+            function logOut() {
+                localStorage.setItem('logado', false);
+                window.location.href = "home.html";
             }
-            else {
-                var forumLink = document.getElementById("forum-link");
-                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
-            }
-        };
+        </script>
 
-        function logOut() {
-            localStorage.setItem('logado', false);
-            window.location.href = "home.html";
-        }
-    </script>
-
-    </header>
-    <br>
-    <br>
+        </header>
+        <br>
+        <br>
 
     <!--Main-->
 
@@ -119,7 +119,9 @@
             } else {
                 localStorage.setItem("mode", "dark-mode");
             }
-        })
+        });
+
+
 
         body.addEventListener("click", e => {
             let clickedElm = e.target;
@@ -134,7 +136,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-sm-4">
-                <div class="card1" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -146,7 +148,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card2" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -158,7 +160,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card3" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -172,7 +174,7 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-sm-4">
-                <div class="card4" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -184,7 +186,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card5" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -196,7 +198,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card6" style="width: 18rem;">
+                <div class="card" style="width: 18rem;">
                     <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
@@ -210,9 +212,6 @@
         </div>
 
     </div>
-    <script>
-        Window.onload = fullData();
-    </script>
     <!-- Footer -->
     <style>
         @media (min-width: 580px) {
