@@ -18,7 +18,7 @@ function logar() {
         }
     }
     if (logged) {
-        window.location.href = "home.html";
+        window.location.href = "index.html";
     }
 
     else {
