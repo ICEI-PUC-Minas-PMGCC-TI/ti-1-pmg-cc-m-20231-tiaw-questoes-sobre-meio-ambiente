@@ -16,71 +16,71 @@
 
 <body>
     <!-- Header -->
-        <nav>
-            <div class="nav-bar">
-                <i class='bx bx-menu sidebarOpen'></i>
-                <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="index.html">Semeando Em Casa</a></span>
 
-                <div class="menu">
-                    <ul class="nav-links">
-                        <li><a href="home.html">Página Principal</a></li>
-                        <li id="forum-link"><a href="">Quem Somos</a></li>
-                        <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
-                        <li id="login-link"><a href="login.html">Login</a></li>
-                    </ul>
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
                 </div>
 
-                <div class="darkLight-searchBox">
-                    <div class="dark-light">
-                        <i class='bx bx-moon moon'></i>
-                        <i class='bx bx-sun sun'></i>
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
                     </div>
 
-                    <div class="searchBox">
-                        <div class="searchToggle">
-                            <i class='bx bx-x cancel'></i>
-                            <i class='bx bx-search search'></i>
-                        </div>
-
-                        <div class="search-field">
-                            <input type="text" placeholder="Search...">
-                            <i class='bx bx-search'></i>
-                        </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
                     </div>
                 </div>
             </div>
-        </nav>
+        </div>
+    </nav>
 
 
-        <script>
-            window.onload = function () {
-                var logado = localStorage.getItem("logado");
+    <script>
+        window.onload = function () {
+            var logado = localStorage.getItem("logado");
 
-                if (logado == "true") {
-                    var accountLink = document.getElementById("account-link");
-                    accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
 
-                    var forumLink = document.getElementById("forum-link");
-                    forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
 
-                    var loginLink = document.getElementById("login-link");
-                    loginLink.remove(); // Remove o link de Login quando logado
-                }
-                else {
-                    var forumLink = document.getElementById("forum-link");
-                    forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
-                }
-            };
-
-            function logOut() {
-                localStorage.setItem('logado', false);
-                window.location.href = "home.html";
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
             }
-        </script>
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+        };
 
-        </header>
-        <br>
-        <br>
+        function logOut() {
+            localStorage.setItem('logado', false);
+            window.location.href = "index.html";
+        }
+    </script>
+
+    </header>
+    <br>
+    <br>
 
     <!--Main-->
 
@@ -251,11 +251,11 @@
         }
 
         .footer {
-            padding: 30px px;
+            width: 100%;
+            padding: 30px 0;
             font-family: 'Play', sans-serif;
             text-align: center;
             background-color: var(--footer-color);
-            /* Adicionei esta linha */
         }
 
         .footer .row {
