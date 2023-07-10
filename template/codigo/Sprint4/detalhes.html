@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="home.css" rel="stylesheet">
+    <title>Descrição de Dados da API</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .image-container img {
+            max-width: 400px;
+            max-height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="#">Semeando Em Casa</a></span>
+
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="index.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
+                    </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <script>
+        window.onload = function () {
+            var logado = localStorage.getItem("logado");
+
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="../Forum/Forum/forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
+            }
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+        };
+
+        function logOut() {
+            localStorage.setItem('logado', false);
+            window.location.href = "index.html";
+        }
+    </script>
+
+    </header>
+    
+    <div class="container">
+        <div class="image-container">
+            <img id="image" src="" alt="Imagem do item">
+        </div>
+        <div class="info-container">
+            <h2>Nome Científico:</h2>
+            <h2 id="nome-cientifico"></h2>
+            <h3>Nome Comum: </h3>
+            <h3 id="nome-comum"></h3>
+            <p>Descrição:</p>
+            <p id="descricao"></p>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <!--Main-->
+
+    <script>
+
+        const body = document.querySelector("body"),
+            nav = document.querySelector("nav"),
+            modeToggle = document.querySelector(".dark-light"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+
+        let getMode = localStorage.getItem("mode");
+        if (getMode && getMode === "dark-mode") {
+            body.classList.add("dark");
+        }
+
+        // js code to toggle dark and light mode
+        modeToggle.addEventListener("click", () => {
+            modeToggle.classList.toggle("active");
+            body.classList.toggle("dark");
+            var logoutButton = document.getElementById('btnlogout');
+
+            if (body.classList.contains('dark')) {
+                logoutButton.classList.remove('logout-button-light');
+                logoutButton.classList.add('logout-button-dark');
+            } else {
+                logoutButton.classList.remove('logout-button-dark');
+                logoutButton.classList.add('logout-button-light');
+            }
+
+            // js code to keep user selected mode even page refresh or file reopen
+            if (!body.classList.contains("dark")) {
+                localStorage.setItem("mode", "light-mode");
+            } else {
+                localStorage.setItem("mode", "dark-mode");
+            }
+        })
+
+        body.addEventListener("click", e => {
+            let clickedElm = e.target;
+
+            if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                nav.classList.remove("active");
+            }
+        });
+
+    </script>
+
+
+    <!-- Footer -->
+    <style>
+        :root {
+            --body-color: #dfd7b6;
+            --text-color: #000000;
+            --search-bar: #F2F2F2;
+            --search-text: #010718;
+            --footer-color: #d2c79d;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        body.dark {
+            --body-color: #383938;
+            --nav-color: #000000;
+            --side-nav: #525653;
+            --text-color: #fcfcfc;
+            --search-bar: #242526;
+            --footer-color: #000000;
+        }
+
+        .footer {
+            padding: 30px px;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            background-color: var(--footer-color);
+            /* Adicionei esta linha */
+        }
+
+        .footer .row {
+            width: 100%;
+            margin: 1% 0%;
+            padding: 0.6% 0%;
+            color: gray;
+            font-size: 0.8em;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+            margin: 0 30px;
+        }
+
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0 5px;
+        }
+
+        .footer .row a span {
+            margin-left: 5px;
+        }
+
+        @media (max-width: 375px) {
+            .footer {
+                text-align: center;
+                padding: 5%;
+            }
+
+            .footer .row {
+                flex-direction: column;
+            }
+
+            .footer .row a {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <footer>
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                <a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a>
+                <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Quem somos</a></li>
+                    <li><a href="#">Nossos Serviços</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
