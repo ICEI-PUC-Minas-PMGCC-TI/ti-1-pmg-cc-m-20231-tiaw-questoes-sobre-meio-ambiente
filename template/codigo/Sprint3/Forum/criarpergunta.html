@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <title>topico</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+        :root {
+            --body-color: #dfd7b6;
+            --text-color: #000000;
+            --search-bar: #F2F2F2;
+            --search-text: #010718;
+            --footer-color: #d2c79d;
+            --box-background: #F9F9F9;
+            --box-border: #C6C6C6;
+        }
+
+        body.dark {
+            --body-color: #383938;
+            --nav-color: #000000;
+            --side-nav: #525653;
+            --text-color: #fcfcfc;
+            --search-bar: #242526;
+            --footer-color: #000000;
+            --box-background: #525653;
+            --box-border: #A0A0A0;
+        }
+
+        .code-border {
+            background-color: var(--box-background);
+            border: 1px solid var(--box-border);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .btn-container a {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="../../Sprint 4/index.html">Semeando Em Casa</a></span>
+
+            <div class="menu">
+                <ul class="nav-links">
+                    <li><a href="../../Sprint 4/index.html">Página Principal</a></li>
+                    <li id="forum-link"><a href="">Quem Somos</a></li>
+                    <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                    <li id="login-link"><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
+                    </div>
+
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <script>
+        window.onload = function () {
+            var logado = localStorage.getItem("logado");
+            var modo = localStorage.getItem("mode");
+
+            if (logado == "true") {
+                var accountLink = document.getElementById("account-link");
+                accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href= "forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+                var loginLink = document.getElementById("login-link");
+                loginLink.remove(); // Remove o link de Login quando logado
+            }
+            else {
+                var forumLink = document.getElementById("forum-link");
+                forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+            }
+            if (modo == "light-mode") {
+                document.getElementById("section-to-change").classList.add("light-mode");
+            }
+
+        };
+
+    </script>
+
+    <div class="btn-container">
+        <a href="forum.html">Voltar para o Forum</a>
+    </div>
+
+    <main>
+        <section>
+
+            <h2>Criar Tópico</h2>
+            <div class="code-border">
+                <form>
+                    <div class="pergunta">
+                        <label for="titulo">Pergunta:</label>
+                        <input type="text" id="titulo" name="titulo">
+                        <label for="Assunto">Sobre o que se trata:</label>
+                        <select id="Assunto">
+                            <option value="Plantio">Plantio</option>
+                            <option value="Controle de Pragas">Controle de Pragas</option>
+                            <option value="Comercio">Comercio</option>
+                        </select><br>
+                        <label for="conteudo">Descreva a sua duvida:</label><br>
+                        <textarea id="conteudo" name="conteudo" rows="4" cols="50"></textarea><br><br>
+                        <input type="button" value="Criar Tópico" onclick="enviarPergunta();">
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <style>
+            :root {
+            --body-color: #dfd7b6;
+            --text-color: #000000;
+            --search-bar: #F2F2F2;
+            --search-text: #010718;
+            --footer-color: #d2c79d;
+            --box-background: #d5c996; /* alterado para um tom mais escuro */
+            --box-border: #C6C6C6;
+        }
+
+        body.dark {
+            --body-color: #383938;
+            --nav-color: #000000;
+            --side-nav: #525653;
+            --text-color: #fcfcfc;
+            --search-bar: #242526;
+            --footer-color: #000000;
+            --box-background: #525653;
+            --box-border: #A0A0A0;
+        }
+
+        .code-border {
+            background-color: var(--box-background);
+            border: 1px solid var(--box-border);
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+
+
+            header {
+                position: sticky;
+                top: 0;
+                background-color: var(--nav-color);
+                z-index: 1000;
+            }
+
+            main {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 0 15px;
+            }
+
+            .card {
+                background-color: var(--search-bar);
+                margin-bottom: 20px;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .footer {
+                padding: 30px 0;
+                font-family: 'Play', sans-serif;
+                text-align: center;
+                background-color: var(--footer-color);
+            }
+
+            .footer .row {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                color: gray;
+                margin-bottom: 20px;
+            }
+
+            .footer .row a {
+                text-decoration: none;
+                color: gray;
+                transition: 0.5s;
+                display: flex;
+                align-items: center;
+                margin: 0 30px;
+            }
+
+            .footer .row a i {
+                font-size: 2em;
+                margin: 0 5px;
+            }
+
+            .footer .row a span {
+                margin-left: 5px;
+            }
+
+            @media (max-width: 768px) {
+                .footer .row {
+                    flex-direction: column;
+                }
+
+                .footer .row a {
+                    margin: 10px 0;
+                }
+            }
+        </style>
+        <script>
+            const body = document.querySelector("body"),
+                nav = document.querySelector("nav"),
+                modeToggle = document.querySelector(".dark-light"),
+                searchToggle = document.querySelector(".searchToggle"),
+                sidebarOpen = document.querySelector(".sidebarOpen"),
+                siderbarClose = document.querySelector(".siderbarClose");
+
+            let getMode = localStorage.getItem("mode");
+            if (getMode && getMode === "dark-mode") {
+                body.classList.add("dark");
+            }
+
+            modeToggle.addEventListener("click", () => {
+                modeToggle.classList.toggle("active");
+                body.classList.toggle("dark");
+
+                if (!body.classList.contains("dark")) {
+                    localStorage.setItem("mode", "light-mode");
+                } else {
+                    localStorage.setItem("mode", "dark-mode");
+                }
+            });
+
+            searchToggle.addEventListener("click", () => {
+                searchToggle.classList.toggle("active");
+            });
+
+            sidebarOpen.addEventListener("click", () => {
+                nav.classList.add("active");
+            });
+
+            body.addEventListener("click", e => {
+                let clickedElm = e.target;
+                if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                    nav.classList.remove("active");
+                }
+            });
+        </script>
+
+
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                <a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a>
+                <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Quem somos</a></li>
+                    <li><a href="#">Nossos Serviços</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </footer>
+
+</body>
+
+</html>

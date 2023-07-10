@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+    <script src="script2.js">
+    </script>
+    <style>
+        :root {
+            --body-color: #dfd7b6;
+            --text-color: #FFF;
+            --search-bar: #F2F2F2;
+            --search-text: #010718;
+            --footer-color: #d2c79d;
+            --qa-text-color: #00000000;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+
+        body.dark {
+            --body-color: #383938;
+            --nav-color: #000000;
+            --side-nav: #525653;
+            --text-color: #fcfcfc;
+            --search-bar: #242526;
+            --footer-color: #000000;
+            --qa-text-color: #FFFFFFFF;
+        }
+        .question, .answer{
+            color: var(--qa-text-color);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--nav-color);
+            z-index: 1000;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .card {
+            background-color: var(--search-bar);
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            padding: 30px 0;
+            font-family: 'Play', sans-serif;
+            text-align: center;
+            background-color: var(--footer-color);
+        }
+
+        .footer .row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            color: gray;
+            margin-bottom: 20px;
+        }
+
+        .footer .row a {
+            text-decoration: none;
+            color: gray;
+            transition: 0.5s;
+            display: flex;
+            align-items: center;
+            margin: 0 30px;
+        }
+
+        .footer .row a i {
+            font-size: 2em;
+            margin: 0 5px;
+        }
+
+        .footer .row a span {
+            margin-left: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .footer .row {
+                flex-direction: column;
+            }
+
+            .footer .row a {
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+
+<body onload="obterDadosLocalStorage(); mudanca()">
+    <header>
+        <!-- Header -->
+ <!-- Header -->
+ <nav>
+    <div class="nav-bar">
+        <i class='bx bx-menu sidebarOpen'></i>
+        <span class="logo navLogo"><a href="../../Sprint 4/index.html">Semeando Em Casa</a></span>
+
+        <div class="menu">
+            <ul class="nav-links">
+                <li><a href="../../Sprint 4/index.html">Página Principal</a></li>
+                <li id = "forum-link"><a href="">Quem Somos</a></li>
+                <li id="account-link"><a href="../Sprint 2/cadastro.html">Cadastro</a></li>
+                <li id="login-link"><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+
+        <div class="darkLight-searchBox">
+            <div class="dark-light">
+                <i class='bx bx-moon moon'></i>
+                <i class='bx bx-sun sun'></i>
+            </div>
+
+            <div class="searchBox">
+                <div class="searchToggle">
+                    <i class='bx bx-x cancel'></i>
+                    <i class='bx bx-search search'></i>
+                </div>
+
+                <div class="search-field">
+                    <input type="text" placeholder="Search...">
+                    <i class='bx bx-search'></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<script>
+     function mudanca () {
+        var logado = localStorage.getItem("logado");
+
+        if (logado == "true") {
+            var accountLink = document.getElementById("account-link");
+            accountLink.innerHTML = '<a href="perfil.html">Perfil</a>'; // Substitui o link Cadastro por um link Perfil
+
+            var forumLink = document.getElementById("forum-link");
+            forumLink.innerHTML = '<a href= "forum.html">Fórum</a>'; // Substitui o link Fórum quando logado
+
+            var loginLink = document.getElementById("login-link");
+            loginLink.remove(); // Remove o link de Login quando logado
+        }
+        else {
+            var forumLink = document.getElementById("forum-link");
+            forumLink.innerHTML = '<a href="#">Quem somos</a>'; // Substitui o link Fórum por Quem somos quando não logado
+        }
+    };
+
+</script>
+
+</header>
+    <br>
+    <br>
+
+    <!--Main-->
+    <style>
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .btn-container a {
+            background-color: #4CAF50;
+            /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .btn-container a:hover {
+            background-color: #45a049;
+        }
+    </style>
+
+
+    <script>
+
+        const body = document.querySelector("body"),
+            nav = document.querySelector("nav"),
+            modeToggle = document.querySelector(".dark-light"),
+            searchToggle = document.querySelector(".searchToggle"),
+            sidebarOpen = document.querySelector(".sidebarOpen"),
+            siderbarClose = document.querySelector(".siderbarClose");
+
+        let getMode = localStorage.getItem("mode");
+        if (getMode && getMode === "dark-mode") {
+            body.classList.add("dark");
+        }
+
+        // js code to toggle dark and light mode
+        modeToggle.addEventListener("click", () => {
+            modeToggle.classList.toggle("active");
+            body.classList.toggle("dark");
+
+            // js code to keep user selected mode even page refresh or file reopen
+            if (!body.classList.contains("dark")) {
+                localStorage.setItem("mode", "light-mode");
+            } else {
+                localStorage.setItem("mode", "dark-mode");
+            }
+        });
+
+        // js code to toggle search box
+        searchToggle.addEventListener("click", () => {
+            searchToggle.classList.toggle("active");
+        });
+
+
+        //   js code to toggle sidebar
+        sidebarOpen.addEventListener("click", () => {
+            nav.classList.add("active");
+        });
+
+        body.addEventListener("click", e => {
+            let clickedElm = e.target;
+
+            if (!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")) {
+                nav.classList.remove("active");
+            }
+        });
+
+    </script>
+
+    <main>
+        <section>
+            <div id="card-container" class="card">
+                <!-- Conteúdo do fórum será inserido aqui pelo JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+    // Código JavaScript vai aqui
+    </script>
+
+
+    <footer>
+        <div id="card-container"></div>
+
+        <div class="btn-container">
+            <a href="criarpergunta.html">Enviar uma pergunta</a>
+        </div>
+
+        <div class="footer">
+            <div class="row">
+                <a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
+                <a href="#"><i class="fa fa-instagram"></i><span>Instagram</span></a>
+                <a href="#"><i class="fa fa-youtube"></i><span>YouTube</span></a>
+                <a href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
+            </div>
+
+            <div class="row">
+                <ul>
+                    <li><a href="#">Quem somos</a></li>
+                    <li><a href="#">Nossos Serviços</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
