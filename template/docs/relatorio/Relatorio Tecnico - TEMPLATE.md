@@ -212,14 +212,9 @@ Equipe de Desenvolvimento - Pedro Tinoco Lanna - Gabriel Samarane Ribeiro - Pedr
 
 ## Controle de Versão
 
-......  COLOQUE AQUI O SEU TEXTO ......
 
-> Discuta como a configuração do projeto foi feita na ferramenta de
-> versionamento escolhida. Exponha como a gerência de tags, merges,
-> commits e branchs é realizada. Discuta como a gerência de issues foi
-> realizada.
 > A ferramenta de controle de versão adotada no projeto foi o
-> [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
+> [Git](https://git-scm.com/), sendo que o [Github]([https://github.com](https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-tiaw-questoes-sobre-meio-ambiente))
 > foi utilizado para hospedagem do repositório `upstream`.
 > 
 > O projeto segue a seguinte convenção para o nome de branchs:
@@ -235,39 +230,35 @@ Equipe de Desenvolvimento - Pedro Tinoco Lanna - Gabriel Samarane Ribeiro - Pedr
 > - `bugfix`: uma funcionalidade encontra-se com problemas
 > - `enhancement`: uma funcionalidade precisa ser melhorada
 > - `feature`: uma nova funcionalidade precisa ser introduzida
->
-> **Links Úteis**:
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
-> - [5 Git Workflows & Branching Strategy to deliver better code](https://zepel.io/blog/5-git-workflows-to-improve-development/)
->
-> **Exemplo - GitHub Feature Branch Workflow**:
->
-> ![Exemplo de Wireframe](images/Github-Workflow.png)
+
+
 
 # **############## SPRINT 1 ACABA AQUI #############**
 
 
 # Projeto da Solução
+Nosso projeto "Semeando em Casa",busca juntar informações relacionadas a agricultura familiar. Em geral, fornecemos informações seguras e detalhadas para que o usuario consiga começar uma nova plantação ou até mesmo ampliar a que ja tenha ou ajudar no controle de prgas, etc. Por meio de um forum de perguntas e respostas buscamos armazenar a maiora da informações fornecidas pelo usuarios, a fim de que o usuario passe por uma situação parecida ele consiga ter acesso as informções publicadas por outros usuarios para que ocnsigo resolver o seu problema. Além disso buscamos criar uma pagína de cadastro de planta, onde o usuario poderá filtrar sobre as plantas cadastradas a fim de que seja fornecido dados sobre a planta, informando a saude, possivel doença, e os cuidados necessario (parte das informações em desenvolvimento).
 
-......  COLOQUE AQUI O SEU TEXTO ......
 
 ## Tecnologias Utilizadas
 
-......  COLOQUE AQUI O SEU TEXTO ......
+*Html: utilizado para projetar a estrutura do site e tornar o memso responsivo para usuários de todos os dispositivos.
 
-> Descreva aqui qual(is) tecnologias você vai usar para resolver o seu
-> problema, ou seja, implementar a sua solução. Liste todas as
-> tecnologias envolvidas, linguagens a serem utilizadas, serviços web,
-> frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-> Apresente também uma figura explicando como as tecnologias estão
-> relacionadas ou como uma interação do usuário com o sistema vai ser
-> conduzida, por onde ela passa até retornar uma resposta ao usuário.
-> 
-> Inclua os diagramas de User Flow, esboços criados pelo grupo
-> (stoyboards), além dos protótipos de telas (wireframes). Descreva cada
-> item textualmente comentando e complementando o que está apresentado
-> nas imagens.
+*Css: através desta linguagem foi feito o estilo do site.
+
+*Javascript: foi utilizado para implementar o sistema de registro e login; comentários; busca; cadastro de restaurantes e produtos; histórico de compras; sistema de pedidos; notificações; paleta de cores e sistema de tradução.
+
+*JSON: utilizado para incluir diversas línguas no site e para armazenar produtos de restaurantes.
+
+*GitHub: hospedagem do repositório e para controle da versão final.
+
+*Visual Studio Code: utilizado como editor de código principal durante o precosso de desenvolvimento do serviço.
+
+*OBS Studio: programa utilizado na gravação do vídeo do projeto.
+
+*Figma: utilizado para a criação dos wireframes durante o processo de copcepção do projeto.
+
+*Miro: organização das tarefas e funções de cada membro da equipe.
 
 ## Arquitetura da solução
 
@@ -283,25 +274,13 @@ Equipe de Desenvolvimento - Pedro Tinoco Lanna - Gabriel Samarane Ribeiro - Pedr
 
 # Avaliação da Aplicação
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Apresente os cenários de testes utilizados na realização dos testes da
-> sua aplicação. Escolha cenários de testes que demonstrem os requisitos
-> sendo satisfeitos.
+Nossa equipe fez 4 tipos de testes: Autenticação, funcionalidade, desempenho e compatibilidade. No teste de autenticação foi muito bem-sucedido, é possível acessar a conta somente com a senha e login correto, guardando suas informações escolhidas. O teste de funcionalidade foi feito juntamente com o de contabilidade, ambos tiveram resultados excelentes. Nossas funções funcionaram de acordo com o planejado e em todos dispositivos e redes que tentamos. Quanto ao teste de desempenho, tivemos o empecilho de ter um número pequeno e limitado de dispositivos para entramos no site ao mesmo tempo, então não sabemos da capacidade máxima que o site suporta.
 
 ## Plano de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
+O site foi testado com por nós mesmo, onde simulamos o compartilhamento de informação e o cadastro de planta. Tudo ocorreu de maneira correta.
 
-> Enumere quais cenários de testes foram selecionados para teste. Neste
-> tópico o grupo deve detalhar quais funcionalidades avaliadas, o grupo
-> de usuários que foi escolhido para participar do teste e as
-> ferramentas utilizadas.
-> 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
+
 
 ## Ferramentas de Testes (Opcional)
 
@@ -315,13 +294,7 @@ Equipe de Desenvolvimento - Pedro Tinoco Lanna - Gabriel Samarane Ribeiro - Pedr
 
 ## Registros de Testes
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Discorra sobre os resultados do teste. Ressaltando pontos fortes e
-> fracos identificados na solução. Comente como o grupo pretende atacar
-> esses pontos nas próximas iterações. Apresente as falhas detectadas e
-> as melhorias geradas a partir dos resultados obtidos nos testes.
-
+O requisito para o teste, foi o acesso rapido do usuario a procurar a informação que deseja. Foi simulado o forum de perguntas em que apresentou todas as pergunats de maneira organizada para que o usario consiga encontrar aquilo que deseja.
 
 # Referências
 
