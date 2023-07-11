@@ -1,21 +1,17 @@
 # Informações do Projeto
 `TÍTULO DO PROJETO`  
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Semeando em Casa
 
 `CURSO` 
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Ciência da Computação 
 
 ## Participantes
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Inclua a lista dos membros da equipe com seus nomes completos.
->
-> Os membros do grupo são: 
-> - Fulano da Silva
-> - Ciclano Albuquerque
+Pedro Tinoco Lanna
+Gabriel Samarane Ribeiro
+Pedro Afonso Marinho 
 
 # Estrutura do Documento
 
@@ -55,111 +51,48 @@
 # Introdução
 
 ## Problema
+ 
+ É nitido que a agricultura familiar é de grande importância na sociedade brasileira, mas ao consultarmos os agricultores da região, percebemos que boa parte não tem um conhecimento necessário para desenvolver a plantação, ampliar ela de maneira diversificada e mais produtiva, além de não ter acesso a informações confiavéis e seguras para cuidar do próprio cultivo. Logo o projeto “Semear em Casa”, tem como foco principal a agricultura familiar, buscando ajudar pessoas que procuram ter, ou já possuem a sua própria plantação, fornecendo de maneira rápida e direta informações confiáveis sobre os cuidados e dicas.
 
-......  COLOQUE AQUI O SEU TEXTO ......
-
-> Nesse momento você deve apresentar o problema que a sua aplicação deve
-> resolver. No entanto, não é a hora de comentar sobre a aplicação.
-> Descreva também o contexto em que essa aplicação será usada, se
-> houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de
-> fato existir, pois ainda não é a hora de apresentar requisitos
-> detalhados ou projetos.
->
-> Nesse momento, o grupo pode optar por fazer uso
-> de ferramentas como Design Thinking, que permite um olhar de ponta a
-> ponta para o problema.
->
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+![image](https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-tiaw-questoes-sobre-meio-ambiente/assets/125670404/c204e75b-dcdd-4d38-a0a0-c24fd309da90)
 
 ## Objetivos
 
-......  COLOQUE AQUI O SEU TEXTO ......
+O objetivo do nosso software, é auxiliar levando informações confiáveis seguras para os agricultores sobre os melhores métodos de cuidados que se deve ter na plantação além de ensinar para aqueles que buscam iniciar uma plantação, todos os pré requisitos e cuidados que se deve ter para começar uma plantação. Além disso buscamos unificar a comunidade de agricultores para que aja um auxílio mútuo para gerar um gama de informações sobre diversos conhecimentos na área por meio de um forúm de perguntas e respostas.
 
-> Aqui você deve descrever os objetivos do trabalho indicando que o
-> objetivo geral é desenvolver um software para solucionar o problema
-> apresentado acima. Apresente também alguns (pelo menos 2) objetivos
-> específicos dependendo de onde você vai querer concentrar a sua
-> prática investigativa, ou como você vai aprofundar no seu trabalho.
-> 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
+
 
 ## Justificativa
 
-......  COLOQUE AQUI O SEU TEXTO ......
+ É notável que no país o AGRO seja muito importante para a economia do Estado, mas poucos sabem que isto persiste no estado de Minas Gerais, o valor bruto gerado pelos pequenos agricultores é cerca de 25% do valor bruto da produção agropecuária de Minas Gerais. Por meio disto, buscamos auxiliar este nicho da sociedade, ajudando não só em sua ampliação de contribuintes, mas tambémno aumento de valor bruto arrecadado.
 
-> Descreva a importância ou a motivação para trabalhar com esta aplicação
-> que você escolheu. Indique as razões pelas quais você escolheu seus
-> objetivos específicos ou as razões para aprofundar em certos aspectos
-> do software.
-> 
-> O grupo de trabalho pode fazer uso de questionários, entrevistas e
-> dados estatísticos, que podem ser apresentados, com o objetivo de
-> esclarecer detalhes do problema que será abordado pelo grupo.
->
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+
 
 ## Público-Alvo
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Buscamos atingir não só aqueles que pensam em iniciar como agricultor, mas também aqueles que buscam ter uma pequena horta em sua casa ou apartamento, além de alcançar aqueles que estão a mais tempo nesse ramo.
 
-> Descreva quem serão as pessoas que usarão a sua aplicação indicando os
-> diferentes perfis. O objetivo aqui não é definir quem serão os
-> clientes ou quais serão os papéis dos usuários na aplicação. A ideia
-> é, dentro do possível, conhecer um pouco mais sobre o perfil dos
-> usuários: conhecimentos prévios, relação com a tecnologia, relações
-> hierárquicas, etc.
->
-> Adicione informações sobre o público-alvo por meio de uma descrição
-> textual, ou diagramas de personas, mapa de stakeholders, ou como o
-> grupo achar mais conveniente.
-> 
-> **Links Úteis**:
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+
  
 # Especificações do Projeto
 
-......  COLOQUE AQUI O SEU TEXTO ......
+Nesta seção será apresentado à quem este serviço irá beneficiar. Através das personas, dos mapas de empatia, propostas de valor e a história dos usuário, é possível contextualizar quem será o usuário. Também é apresentado os requisitos e restrições da criação do projeto, visando mostrar com detalhes o foco do projeto, assim como possíveis dificuldades e limitações.
 
-> Apresente uma visão geral do que será abordado nesta parte do
-> documento, enumerando as técnicas e/ou ferramentas utilizadas para
-> realizar a especificações do projeto
 
 ## Personas, Empatia e Proposta de Valor
 
-......  COLOQUE AQUI O SEU TEXTO ......
+As personas do serviço "Semeando em Casa" são pessoas que em geral buscam informações para sua plantação, seja pra controle de pragras, ampliação, diversificação entre outras informações. Além disso são personas que variam em seus objetivos, que buscam ter uma vaso ou outro em casa para ter uma pequena horta, até aqueles que buscam ter uma plantação mais sustentável.
+
+![image](https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-tiaw-questoes-sobre-meio-ambiente/assets/125670404/8b48d8a7-9c70-4e38-839d-f43b239088a1)
+![image](https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-tiaw-questoes-sobre-meio-ambiente/assets/125670404/cd423a40-a484-4a5d-935f-9e98e265273a)
+
+Baseando nas personas que usaram nosso site, fizemos uma proposta de valor que abrangesse ambas personas.
+
+![image](https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20231-tiaw-questoes-sobre-meio-ambiente/assets/125670404/1e0ee72e-b7d4-4f62-a6f4-012e4a0b7a90)
 
 
-> Relacione as personas identificadas no seu projeto, os respectivos mapas de empatia e 
-> mapas da proposta de valor. Lembre-se que você deve ser enumerar e descrever precisamente 
-> e de forma personalizada todos os principais envolvidos com a solução almeja. 
-> 
-> Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina
-> e/ou nos seguintes links:
->
-> **Links Úteis**:
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Como fazer um mapa de empatia - Vídeo](https://www.youtube.com/watch?v=JlKHGpVoA2Y)
-> - [Canvas da Proposta de Valor](https://analistamodelosdenegocios.com.br/canvas-da-proposta-de-valor/)
-> 
-> 
-> **Exemplo de Persona**
-> 
-> ![Exemplo de Persona](images/persona.png)
-> 
-> Fonte: [Como criar uma persona para o seu negócio](https://raissaviegas.com.br/como-criar-uma-persona/)
->
-> **Exemplo de Proposta de Valor**
-> ![Exemplo da Proposta de Valor](images/proposta_valor.png)
+
+
 
 
 ## Histórias de Usuários
